@@ -1,0 +1,15 @@
+import discord
+import string
+
+client = discord.Client(intents = discord.Intents.all())
+liste_feur = ["quoi", "koi", "qoui", "coi", "kio"]
+
+@client.event
+async def on_message(message):
+     res = message.content.replace('.', '').replace(' ', '').replace(',', '').replace(':', '').replace('?', '').replace('!', '').replace('"', '').replace("'", '').replace('/', '').replace(';', '')
+     res = res.lower()
+     for i in range(len(liste_feur)):
+          if res.endswith(liste_feur[i]):
+               await message.channel.send('Feur!')
+
+client.run('TOKEN_GOES_HERE')
